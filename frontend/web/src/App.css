@@ -1,0 +1,487 @@
+/* App.css */
+.hud-theme {
+  background: linear-gradient(135deg, #0a0a2a 0%, #1a1a4a 100%);
+  color: #00f3ff;
+  font-family: 'Courier New', monospace;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* HUD Scanline Effect */
+.hud-scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 243, 255, 0.02) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1000;
+  animation: scanline 2s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Header Styles */
+.hud-header {
+  background: rgba(10, 10, 42, 0.95);
+  border-bottom: 2px solid #00f3ff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 100;
+}
+
+.hud-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hud-title h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #00f3ff, #8a2be2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.hud-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.zama-logo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #00f3ff, #8a2be2);
+  border-radius: 50%;
+  position: relative;
+}
+
+.zama-logo::after {
+  content: 'Z';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #0a0a2a;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.hud-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Button Styles */
+.hud-btn {
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid #00f3ff;
+  color: #00f3ff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hud-btn:hover {
+  background: rgba(0, 243, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.hud-btn.primary {
+  background: linear-gradient(45deg, #00f3ff, #8a2be2);
+  color: #0a0a2a;
+  font-weight: bold;
+}
+
+.hud-btn.buy {
+  background: rgba(0, 255, 0, 0.1);
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+.hud-btn.sell {
+  background: rgba(255, 0, 0, 0.1);
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+/* Navigation */
+.hud-nav {
+  display: flex;
+  background: rgba(10, 10, 42, 0.8);
+  border-bottom: 1px solid #00f3ff;
+  padding: 0 2rem;
+}
+
+.hud-tab {
+  background: none;
+  border: none;
+  color: #00f3ff;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.hud-tab.active {
+  border-bottom-color: #00f3ff;
+  background: rgba(0, 243, 255, 0.1);
+}
+
+/* Main Content */
+.hud-main {
+  padding: 2rem;
+  min-height: calc(100vh - 200px);
+}
+
+.hud-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  height: 100%;
+}
+
+/* Panel Styles */
+.hud-panel {
+  background: rgba(10, 10, 42, 0.6);
+  border: 1px solid #00f3ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.hud-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+}
+
+/* Economic Indicators */
+.indicators-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.indicator-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(0, 243, 255, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid #00f3ff;
+}
+
+.indicator-trend.up { color: #00ff00; }
+.indicator-trend.down { color: #ff0000; }
+.indicator-trend.stable { color: #ffff00; }
+
+/* Market Grid */
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.market-item {
+  transition: all 0.3s ease;
+}
+
+.market-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2);
+}
+
+.resource-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.price-change.up { color: #00ff00; }
+.price-change.down { color: #ff0000; }
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.market-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Production List */
+.production-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.production-record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record-info {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.status.pending { color: #ffff00; }
+.status.completed { color: #00ff00; }
+.status.failed { color: #ff0000; }
+
+/* Rankings */
+.rankings-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.ranking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Modal Styles */
+.hud-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.hud-modal {
+  background: #0a0a2a;
+  border: 2px solid #00f3ff;
+  border-radius: 8px;
+  padding: 2rem;
+  min-width: 400px;
+  max-width: 90vw;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.modal-header button {
+  background: none;
+  border: none;
+  color: #00f3ff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #00f3ff;
+}
+
+.hud-input, .hud-select {
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid #00f3ff;
+  color: #00f3ff;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+/* Notification */
+.hud-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  background: #0a0a2a;
+  border: 1px solid;
+  animation: slideIn 0.3s ease;
+}
+
+.notification-content.success { border-color: #00ff00; color: #00ff00; }
+.notification-content.error { border-color: #ff0000; color: #ff0000; }
+.notification-content.pending { border-color: #ffff00; color: #ffff00; }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Footer */
+.hud-footer {
+  background: rgba(10, 10, 42, 0.95);
+  border-top: 1px solid #00f3ff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Loading Screen */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0a0a2a;
+}
+
+.hud-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #00f3ff;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hud-text {
+  font-size: 1.2rem;
+  color: #00f3ff;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hud-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .hud-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hud-nav {
+    flex-wrap: wrap;
+  }
+  
+  .market-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hud-footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+/* FHE Encryption Visual Effects */
+.fhe-encrypted {
+  position: relative;
+}
+
+.fhe-encrypted::after {
+  content: '🔒 FHE ENCRYPTED';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 243, 255, 0.9);
+  color: #0a0a2a;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fhe-encrypted:hover::after {
+  opacity: 1;
+}

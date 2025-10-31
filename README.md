@@ -1,4 +1,4 @@
-```markdown
+
 # mmoEconomyFHE: A GameFi MMO with an FHE-encrypted Player-Driven Economy 🎮💰
 
 mmoEconomyFHE is an innovative massively multiplayer online game (MMO) that leverages **Zama's Fully Homomorphic Encryption (FHE) technology** to create a player-driven economy. This captivating GameFi experience allows players to influence the economic systems—such as resource outputs and price indices—dynamically and homomorphically based on their collective actions. Immerse yourself in a living economic environment that evolves unpredictably, offering players a truly unique and engaging gameplay experience.
